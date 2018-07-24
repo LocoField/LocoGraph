@@ -1,4 +1,5 @@
 ﻿#include "DisplayWidget.h"
+#include "PCars2SharedMemory.h"
 
 #include <iostream>
 #include <thread>
@@ -49,21 +50,24 @@ void DisplayWidget::onHorizontalScrollBarChanged(int value)
 
 void DisplayWidget::onThreadFunction()
 {
+	PCars2SharedMemory pcars2;
+	if( pcars2.initialize() == false )
+		return;
+
 	cout << "thread running." << endl;
 
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dist_int(0, 250);
-	std::uniform_real_distribution<> dist_real(0.0, 0.1);
+	SharedMemory* data = pcars2.pDataLocal;
 
 	while( m_isThreadRunning )
 	{
+		pcars2.update();
+
 		m_dataSequence.push_back(m_dataSequence.size());
-		m_dataMain.push_back(dist_int(gen));
-		m_dataDataSub[0].push_back(dist_real(gen));
-		m_dataDataSub[1].push_back(dist_real(gen));
-		m_dataDataSub[2].push_back(dist_real(gen));
-		m_dataDataSub[3].push_back(dist_real(gen));
+		m_dataMain.push_back(data->mSpeed / 1000 * 3600);
+		m_dataDataSub[0].push_back(data->mSuspensionTravel[0]);
+		m_dataDataSub[1].push_back(data->mSuspensionTravel[1]);
+		m_dataDataSub[2].push_back(data->mSuspensionTravel[2]);
+		m_dataDataSub[3].push_back(data->mSuspensionTravel[3]);
 
 		emit signalDrawGraph();
 

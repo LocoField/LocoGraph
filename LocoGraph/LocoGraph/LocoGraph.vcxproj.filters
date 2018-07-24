@@ -48,6 +48,9 @@
     <ClCompile Include="GeneratedFiles\moc_qcustomplot.cpp">
       <Filter>Qt Files</Filter>
     </ClCompile>
+    <ClCompile Include="PCars2SharedMemory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DockWidget.h">
@@ -65,5 +68,11 @@
     <CustomBuild Include="MainWindow.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <ClInclude Include="PCars2SharedMemory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedMemory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

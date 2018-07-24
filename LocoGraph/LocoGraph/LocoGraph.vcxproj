@@ -93,10 +93,13 @@
     <ClCompile Include="GeneratedFiles\moc_StageWidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="PCars2SharedMemory.cpp" />
     <ClCompile Include="qcustomplot.cpp" />
     <ClCompile Include="StageWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PCars2SharedMemory.h" />
+    <ClInclude Include="SharedMemory.h" />
     <CustomBuild Include="DisplayWidget.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"..\..\Qt\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB "-I." "-I..\..\Qt\include" "-I.\GeneratedFiles\." "-I..\..\Qt\include\QtCore"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>

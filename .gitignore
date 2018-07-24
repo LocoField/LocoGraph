@@ -1,0 +1,5 @@
+LocoGraph/bin64
+LocoGraph/LocoGraph/x64
+LocoGraph/*.db
+LocoGraph/*.opendb
+LocoGraph/.vs
